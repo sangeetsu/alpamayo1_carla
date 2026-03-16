@@ -229,7 +229,7 @@ This is the safest default because it keeps remote process lifecycle explicit.
 
 ## Step 11: Configure this repo to use the lab server
 
-On the workstation in this repo, update `carla_server_profiles.toml`.
+On the workstation in this repo, copy `carla_server_profiles.example.toml` to `carla_server_profiles.toml`, then update the local `carla_server_profiles.toml`.
 
 Example remote profile:
 

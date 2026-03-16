@@ -36,6 +36,7 @@ from alpamayo_r1.models.alpamayo_r1 import AlpamayoR1
 
 
 DEFAULT_SERVER_CONFIG = REPO_ROOT / "carla_server_profiles.toml"
+EXAMPLE_SERVER_CONFIG = REPO_ROOT / "carla_server_profiles.example.toml"
 
 CAMERA_SPECS = (
     {
@@ -280,6 +281,14 @@ def load_server_profiles(config_path: Path) -> tuple[str | None, dict[str, Serve
 
 def resolve_server_profile(args: argparse.Namespace) -> tuple[ServerProfile, Path]:
     config_path = Path(args.server_config).expanduser().resolve()
+    using_cli_overrides = any(value is not None for value in (args.host, args.port, args.tm_port))
+    if not config_path.exists() and config_path == DEFAULT_SERVER_CONFIG and not using_cli_overrides:
+        raise FileNotFoundError(
+            "Server config "
+            f"`{config_path}` not found. Copy `{EXAMPLE_SERVER_CONFIG}` to "
+            f"`{config_path}` and customize it, or pass --host/--port/--tm-port explicitly."
+        )
+
     active_profile, profiles = load_server_profiles(config_path)
 
     profile_name = args.server_profile or active_profile or "inline_defaults"

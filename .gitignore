@@ -214,3 +214,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local CARLA server targets can include internal hosts and per-user launch commands.
+carla_server_profiles.toml

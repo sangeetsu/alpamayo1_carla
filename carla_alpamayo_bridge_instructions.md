@@ -5,7 +5,8 @@
 The current bridge implementation lives in this repo:
 
 - `/home/sangeetsu/alpamayo1_carla/carla_alpamayo_bridge.py`
-- `/home/sangeetsu/alpamayo1_carla/carla_server_profiles.toml`
+- `/home/sangeetsu/alpamayo1_carla/carla_server_profiles.example.toml`
+- `/home/sangeetsu/alpamayo1_carla/carla_server_profiles.toml` (local, gitignored)
 - `/home/sangeetsu/alpamayo1_carla/carla_alpamayo_bridge_instructions.md`
 - `/home/sangeetsu/alpamayo1_carla/TODO.md`
 
@@ -42,6 +43,11 @@ The bridge has four layers:
 The default profile file is:
 
 `/home/sangeetsu/alpamayo1_carla/carla_server_profiles.toml`
+
+This local file is gitignored so internal hosts, usernames, and launch commands are not committed.
+Create it by copying:
+
+`/home/sangeetsu/alpamayo1_carla/carla_server_profiles.example.toml`
 
 ### `local_package`
 
@@ -166,6 +172,12 @@ You also need:
 3. A CARLA server that is either already reachable or launchable through the selected profile
 
 ## Basic Usage
+
+Before the first run on a fresh checkout:
+
+```bash
+cp /home/sangeetsu/alpamayo1_carla/carla_server_profiles.example.toml /home/sangeetsu/alpamayo1_carla/carla_server_profiles.toml
+```
 
 Run with the default tested local profile:
 
