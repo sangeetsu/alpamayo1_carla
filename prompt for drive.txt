@@ -1,0 +1,23 @@
+Create a robust, production-quality Python script to run an autonomous driving experiment in the CARLA Simulator (Town03) using an ego-vehicle. The script must satisfy the following technical requirements:
+Environment Setup:
+Load the default track Town03.
+Set the simulation to Synchronous Mode with a fixed delta time (e.g., 0.1s/10 FPS) for reproducible results.
+Sensor Suite (5 Perspectives + Ground Truth):
+Spawn and attach five RGB cameras to the ego-vehicle: Front, Back, Left, Right, and a fifth perspective (e.g., Top-down/Bird's Eye View).
+Include a Semantic Segmentation or Depth sensor synchronized with the RGB cameras to provide ground-truth context.
+Modular Folder Structure:
+Automatically create a directory structure for the test run: test_runs/Town03/<timestamp>/.
+Inside this, create subfolders for each perspective: /front, /back, /left, /right, /top_down, and /ground_truth.
+Store images as .png files named by frame count or timestamp.
+Real-Time Data Overlay & Logging:
+Use a library like OpenCV to overlay a heads-up display (HUD) on the primary (Front) camera frames before saving.
+HUD Metrics to Overlay:
+Performance: Driving Score, % Success, Average Completion.
+Safety: Distance to Lane Center, Closest Distance to Objects, Collision Counts (Vehicle, Pedestrian, General), and Infractions (Off-road, Wrong Lane, Traffic Light).
+VLA/Model Specifics: Reasoning Alignment (placeholder for Alpamayo logic), Action Latency, Trajectory Planning Error.
+Dynamics: Velocity, Linear Acceleration, and Angular Velocity.
+Context: Timestamp, Weather Condition, and Frame Number.
+Experiment Logic:
+Ensure the script handles clean teardown (destroying actors on exit) and includes a try-except block to maintain simulation stability.
+Include a main loop that runs the simulation for a set duration or until an infraction/collision occurs.
+Generate the full experiment_runner.py file and any necessary utility scripts.
